@@ -1,0 +1,244 @@
+@use './adaptive';
+
+@import 'colors';
+@import url(../css/NullStyle.css);
+@import url(../css/fonts.css);
+@import url(../css/header.css);
+@import url(../css/swiper.css);
+@import url(../css/footer.css);
+@import url(../css/main.css);
+@import url(../css/product-card.css);
+@import url(../css/swiper-products.css);
+
+html, body{
+   height: 100%;
+   font-family: Arial, Helvetica, sans-serif;
+   background: url(../img/background.png);
+}
+body.lock{
+   overflow: hidden;
+}
+
+.container{
+   max-width: 980px;
+   margin: 0 auto;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+.title {
+   padding-bottom: 25px;
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+
+.title-text {
+   font-family: oswald;
+   font-size: 24px;
+}
+
+.title-ornament {
+   flex: 1 1 auto;
+   margin-right: 45px;
+   height: 7px;
+   background: url(../img/Shape.png) 0 0/ cover no-repeat;
+}
+.title-ornament-full {
+   margin-right: 0px;
+}
+
+.scroll-up{
+   position: fixed;
+   width: 30px;
+   height: 30px;
+   bottom: 50px;
+   right: 32px;
+   background-color: $mainRed;
+   border-radius: 5px;
+   z-index: 15;
+   visibility: hidden;
+   opacity: 0;
+   transition: 0.3s;
+   &:hover{
+      box-shadow: 0 0 5px $mainRed;
+         &::before,
+         &::after{
+            top: 10px;
+         }
+}
+   &::before,
+   &::after{
+      content: '';
+      height: 2px;
+      width: 10px;
+      position: absolute;
+      top: 13px;
+      background-color: white;
+      transition: 0.5s;
+   }
+   &::before{
+      transform: rotate(-45deg);
+      left: 7px;
+   }
+   &::after{
+      transform: rotate(45deg);
+      right: 7px;
+   }
+}
+.scroll-up.active{
+   visibility: visible;
+   opacity: 1;
+}
+
+._flyImg{
+   opacity: 1;
+   position: fixed;
+   z-index: 100;
+   transition: all 1s ease 0s;
+}
+
+// корзина
+.header-cart__body{
+   background-color: white;
+   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.466);
+   position: absolute;
+   top: 47px;
+   right: 10px;
+   padding: 15px;
+   width: 350px;
+   z-index: 15;
+   display: flex;
+   flex-direction: column;
+   opacity: 0;
+   visibility: hidden;
+   transition: 0.3s;
+   transform: translate(0px, 20px);
+   @media(max-width:480px){
+      position: fixed;
+      width: 100%;
+      right: 0;
+   }
+}
+.header-cart__body._active{
+   opacity: 1;
+   visibility: visible;
+   transform: translate(0px, 0px);
+}
+.cart-list {
+   overflow: auto;
+   max-height: 300px;
+   color: $textColor;
+   &__img {
+      flex: 0 0 65px;
+      height: 65px;
+      position: relative;
+      transition: 0.3s;
+   }
+
+   &__body {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 0 0 0 10px;
+   }
+   &__quatity {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 5px 0 0 ;
+   }
+
+   &__title {
+      color: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 0 5px;
+      transition: 0.3s;
+      &:hover{
+         text-decoration: underline ;
+      }
+   }
+   &__artist{
+      color: inherit;
+      font-style: italic;
+      font-size: 12px;
+      margin: 0 0 0 12px;
+      transition: 0.3s;
+      &:hover{
+         text-decoration: underline ;
+      }
+   }
+   &__priceblock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+   }
+
+   &__price {
+      color: inherit;
+      font-size: 14px;
+      font-weight: 700;
+   }
+
+   &__delete {
+      font-size: 13px;
+      font-weight: 700;
+      background-color: $mainRed;
+      border-radius: 50%;
+      color: white;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   &__item {
+      display: flex;
+      align-items: flex-start;
+      border-bottom: 1px dotted $textColor;
+      padding: 15px 0;
+   }
+}
+.header-cart {
+
+   &__total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px dotted $textColor;
+   }
+
+   &__total-text {
+      font-size: 14px;
+      font-weight: 700;
+   }
+
+   &__total-cost {
+      font-weight: 700;
+      font-size: 18px;
+      color: $mainRed;
+   }
+
+   &__buttons {
+      padding: 20px 0;
+      display: flex;
+      justify-content: start;
+      gap: 7px;
+   }
+}
+.cart-btn {
+   color: white;
+   font-size: 12px;
+   background-color: $textColor;
+   padding: 10px;
+   transition: 0.3s;
+   &:hover{
+      background-color: $mainRed;
+   }
+}
+

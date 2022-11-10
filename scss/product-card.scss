@@ -1,0 +1,211 @@
+@use './adaptive';
+@import url(../css/fonts.css);
+@import 'colors';
+
+// Рейтинг
+// цвет рейтинга--------------------------
+$color: #222222;
+$activeColor: $mainRed;
+//----------------------------------------
+.rating {
+   display: flex;
+   align-items: flex-end;
+   font-size: 24px;
+   line-height: 0.75;
+   &__body {
+      position: relative;
+      &::before{
+         content: '★★★★★';
+         display: block;
+         color: $color;
+         text-shadow: 2px 0 3px rgba(0, 0, 0, 0.253);
+      }
+   }
+   &__active {
+      position: absolute;
+      top: 0;left: 0;
+      width: 0%;
+      height: 100%;
+      overflow: hidden;
+      &::before{
+         content: '★★★★★';
+         position: absolute;
+         top: 0;left: 0;
+         width: 100%;
+         height: 100%;
+         color: $activeColor;
+      }
+   }
+   &__items {
+      display: flex;
+      position: absolute;
+      top: 0;left: 0;
+      width: 100%;
+      height: 100%;
+   }
+   &__item {
+      position: relative;
+      flex: 0 0 20%;
+      height: 100%;
+      opacity: 0;
+   }
+   &__value {
+      display: none;
+      font-size: 50%;
+      line-height: 1;
+      padding-left: 10px;
+   }
+}
+//------------------------------------------
+
+// Карточка товара----------------------------
+.card {
+   flex: 1 1 100%;
+   max-width: 230px;
+   background-color: white;
+   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.151);
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   height: 100%;
+   border-radius: 10px;
+   
+   color: #1e1e20;
+   a{
+      color: #1e1e20;
+   }
+   &__cover {
+      width: 100%;
+      height: 230px;
+      position: relative;
+      border: 1px solid black;
+      border-radius: 10px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.158);
+      position: relative;
+      &:hover .card__cover-content{
+         opacity: 1;
+      }
+   }
+   &__cover-content{
+      opacity: 0;
+      transition-duration: 0.4s;
+      position: absolute;
+      padding: 10px 25px;
+      top: 0;left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      z-index: 2;
+      color: white;
+      font-size: 12px;
+      line-height: 1.9;
+      background-color: #1e1e20c9;
+   }
+   &__cover-img {
+      border-radius: 10px;
+      position: absolute;
+      top: 0;left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+   &__textblock {
+      flex: 1 1 auto;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+   }
+}
+.cover-content-item{
+   position: relative;
+   width: 100%;
+   padding-bottom: 3px;
+   &:not(:last-child){
+      border-bottom: 1px #a2a2a5 ;
+      border-style: ridge;
+   }
+   span{
+      margin-left: 15px;
+   }
+}
+.card-textblock {
+   &__title {
+      flex: 1 1 auto;
+      display: flex;
+      gap: 10px;
+   }
+   &__title-name {
+      font-size: 16px;
+      font-weight: 700;
+   }
+   &__title-artist {
+      font-style: italic;
+      font-size: 14px;
+   }
+   &__title-name,
+   &__title-artist{
+      &:hover{
+         text-decoration: underline;
+      }
+   }
+   &__text {
+      font-size: 13px;
+      line-height: 1.4;
+   }
+   &__buy {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+   &__buy-price {
+      font-size: 15px;
+      font-weight: 700;
+   }
+   &__buy-add-button {
+      font-size: 11px;
+      color: white;
+      background-color: #1e1e20;
+      padding: 8px 5px;
+      border-radius: 5px;
+      transition: 0.3s;
+      &:hover{
+         background-color:$mainRed;
+      }
+      &._hold{
+         opacity: 0.2;
+         cursor: default;
+      }
+   }
+}
+.card-sale{
+   .card__cover-content{
+      opacity: 1;
+      position: relative;
+      top: 10px;left: 10px;
+      background-color: #cc3333be;
+      font-size: 12px;
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   .card-textblock__buy-price{
+      text-decoration: line-through;
+      display: inline-block;
+   }
+   .card-textblock__buy-price-sale{
+      display: inline-block;
+      padding: 2px;
+      margin-left: 8px;
+         text-decoration: none;
+         color: white;
+         background-color: $mainRed;
+      }
+}
