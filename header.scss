@@ -1,0 +1,240 @@
+@use './adaptive';
+@import url(../css/fonts.css);
+@import 'colors';
+
+.header {
+
+   &__top {
+      background-color: #2a2b2c;
+      border-top: 3px solid $mainRed;
+   }
+   &__burger-menu{
+      position: relative;
+      width: 30px;
+      height: 25px;
+   }
+}
+.header-top {
+
+   &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+   }
+
+   &__social {
+      display: flex;
+      gap: 10px;
+   }
+
+   &__social-ref {
+      position: relative;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition-duration: 0.3s;
+      &:hover{
+         scale: 1.1;
+      }
+   }
+
+   &__social-ico {
+      position: absolute;
+      width: 80%;
+      height: 78%;
+      object-fit: contain;
+   }
+
+   &__cartblock {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+   }
+}
+.ref {
+   &__facebook {
+      background-color: #3a69ae;
+   }
+   &__dribble {
+      background-color: #e14a74;
+   }
+   &__twitter {
+      background-color: #36bbe2;
+   }
+   &__mail {
+      background-color: #f4f4f4;
+   }
+   &__vimeo {
+      background-color: #14beee;
+   }
+}
+.header-cartblock {
+   &__login-ref {
+      color: white;
+      font-size: 13px;
+      transition-duration: 0.3s;
+      &:hover{
+         text-shadow: 0 0 5px white;
+      }
+   }
+   &__cart {
+      background-color: $mainRed;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      transition-duration: 0.3s;
+      &:hover{
+         box-shadow: 0 13px 0 $mainRed, 0 18px 5px rgba(0, 0, 0, 0.445);
+      }
+   }
+}
+.header-cart {
+   position: relative;
+   width: 28px;
+   height: 28px;
+   &__img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;left: 0;
+   }
+
+   &__lable {
+      color: white;
+      font-size: 13px;
+   }
+}
+.header-bot {
+   &__container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+   }
+   &__logo {
+      position: relative;
+      width: 135px;
+      @include adaptive.adaptive-value("height", 60, 40, 0);
+   }
+
+   &__img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;left: 0;
+      object-fit: contain;
+   }
+
+   &__menu {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      flex-wrap: wrap;
+      z-index: 10;
+   }
+
+   &__menu-item {
+      font-size: 14px;
+      font-weight: 700;
+      color: black;
+      &:hover{
+         text-shadow: 3px 3px 5px gray;
+      }
+   }
+}
+.header__burger-menu{
+   display: none;
+   position: relative;
+   width: 30px;
+   height: 20px;
+   z-index: 11;
+   cursor: pointer;
+   &::after,
+   &::before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: black;
+      left: 0;
+      transition-duration: 0.3s;
+   }
+   &::after{
+      bottom: 0px;
+   }
+   &::before{
+      top: 0px;
+   }
+}
+.burger-menu{
+   position: absolute;
+   top: 9px;left: 0;
+   width: 100%;
+   height: 2px;
+   background-color: black;
+   transition-duration: 0.3s;
+}
+
+@media (max-width:700px){
+   .header__burger-menu{
+      display: block;
+   }
+   .header__burger-menu.active{
+      span{
+         opacity: 0;;
+      }
+      &::after{
+         transform: rotate(45deg);
+         bottom: 9px;
+      }
+      &::before{
+         transform: rotate(-45deg);
+         top: 9px;
+      }
+   }
+   .header-bot{
+      &__menu{
+      position: absolute;
+      top: -100%;right: 0;
+      padding-top: 150px;
+      padding-right: 55px;
+      align-items:flex-end;
+      flex-direction: column;
+      background-color: $mainRed;
+      height: 100%;
+      width: 100%;
+      transition-duration: 0.3s;
+      overflow: auto;
+      }
+      &__menu-item{
+         color: white;
+         font-size: 18px;
+         &:hover{
+            text-shadow: 4px 4px 0px #a12828;
+         }
+      }
+   }
+   .header-bot__menu.active{
+      top: 0;
+      right: 0;
+   }
+}
+@media (max-width:480px){
+   .header-top{
+      &__container{
+         justify-content: flex-end;
+      }
+      &__social{
+      display: none;
+      }
+
+   }
+}

@@ -1,0 +1,53 @@
+@charset "UTF-8";
+.swiper-products {
+  position: relative;
+  margin-top: -50px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.swiper-products-button-prev,
+.swiper-products-button-next {
+  position: absolute;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: #cc3333;
+  z-index: 5;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.swiper-products-button-prev:hover,
+.swiper-products-button-next:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.425);
+}
+
+.swiper-products-button-next {
+  right: 0;
+}
+.swiper-products-button-next::before {
+  content: "→";
+  position: relative;
+  top: 2px;
+  left: 3px;
+  color: white;
+}
+
+.swiper-products-button-prev {
+  right: 23px;
+}
+.swiper-products-button-prev::before {
+  content: "←";
+  color: white;
+  position: relative;
+  top: 2px;
+  left: 3px;
+}
+
+.swiper-button-disabled {
+  background-color: rgba(99, 99, 99, 0.473);
+}
